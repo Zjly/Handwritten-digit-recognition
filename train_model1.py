@@ -29,13 +29,12 @@ def train_model():
 	# 构建模型
 	model = Sequential()
 	model.add(Dense(512, activation="relu", input_shape=(784,)))
-	model.add(Dropout(0.2))
-	# model.add(Dense(256, activation="relu"))
+	model.add(Dense(256, activation="relu"))
 	model.add(Dense(10, activation='softmax'))
 	model.compile(optimizer=SGD(), loss='categorical_crossentropy', metrics=['accuracy'])
 
 	# 训练模型
-	model.fit(x=x_train, y=y_train, batch_size=64, epochs=3, verbose=1, callbacks=None, validation_split=0.2,
+	model.fit(x=x_train, y=y_train, batch_size=64, epochs=100, verbose=1, callbacks=None, validation_split=0.2,
 			  validation_data=None, shuffle=True, class_weight=None, sample_weight=None, initial_epoch=0,
 			  steps_per_epoch=None, validation_steps=None)
 
@@ -44,7 +43,7 @@ def train_model():
 	print(score)
 
 	# 保存模型
-	model.save('./digit_model.h5')
+	model.save('./digit_model1.h5')
 
 
 if __name__ == '__main__':
